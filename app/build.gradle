@@ -1,0 +1,132 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+apply from: '../deps.gradle'
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("gradle.properties")))
+
+android {
+    namespace 'com.bca.music.player'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.bca.music.player"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BASE_URL_API", localProperties['base_api_url']
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+    kotlin {
+        jvmToolchain {
+            languageVersion.set(JavaLanguageVersion.of(11))
+        }
+        // Or shorter:
+        jvmToolchain(11)
+        // For example:
+        jvmToolchain(11)
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+    kapt {
+        generateStubs = true
+    }
+
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    implementation androidX.recyclerX
+    implementation androidX.cardX
+    implementation androidX.activityExt
+    implementation androidX.fragmentKtx
+    implementation androidX.constraintLayout
+    implementation androidX.lifecycleCommon
+    implementation androidX.lifecycleExtensions
+    implementation androidX.material
+    implementation androidX.swipeLayout
+
+    // network
+    implementation libraries.okhttpLogging
+    implementation libraries.stetho
+    implementation libraries.stethoOkhttp
+    implementation libraries.retrofit
+    implementation libraries.retrofitGson
+    implementation libraries.rxJavaAdapter
+
+    // rxjava
+    implementation libraries.rxJava
+    implementation libraries.rxAndroid
+    implementation libraries.rxBinding
+
+
+    // image
+    implementation libraries.glide
+    implementation libraries.glideOkhttp
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt libraries.glideCompiler
+
+
+
+    // DI
+    implementation libraries.dagger
+    implementation libraries.daggerSupport
+    kapt libraries.daggerCompiler
+    kapt libraries.daggerProcessor
+
+    // ui
+    implementation libraries.sdp
+    implementation libraries.ssp
+    implementation libraries.fastAdapter
+    implementation libraries.fastAdapterViewBinding
+    implementation libraries.fastAdapterScroll
+    implementation libraries.fastAdapterUtils
+    implementation libraries.fasAdapterExpandable
+    implementation libraries.otpView
+    implementation libraries.circleImage
+
+
+    // log
+    implementation libraries.timber
+
+
+    implementation libraries.lottie
+
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
