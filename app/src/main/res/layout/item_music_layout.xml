@@ -92,6 +92,7 @@
             app:layout_constraintStart_toEndOf="@+id/song_title"
             app:layout_constraintTop_toTopOf="@+id/song_title"
             app:lottie_autoPlay="true"
+            android:visibility="gone"
             app:lottie_fileName="sound_wave_audio.json"
             app:lottie_loop="true"
             app:lottie_repeatMode="restart" />

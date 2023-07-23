@@ -35,7 +35,7 @@
             android:id="@+id/main_recycleview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/music_item_layout" />
+            tools:listitem="@layout/item_music_layout" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 

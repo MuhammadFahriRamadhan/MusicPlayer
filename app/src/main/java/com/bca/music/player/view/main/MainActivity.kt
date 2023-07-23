@@ -1,11 +1,10 @@
 package com.bca.music.player.view.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bca.music.player.R
 import com.bca.music.player.core.base.BaseActivityVM
 import com.bca.music.player.core.domain.model.SearchResultItem
@@ -18,24 +17,29 @@ import com.bca.music.player.databinding.ActivityMainBinding
 import com.bca.music.player.view.main.item.MusicEmptyItem
 import com.bca.music.player.view.main.item.MusicLayoutItem
 import com.jakewharton.rxbinding3.widget.textChanges
-import com.mikepenz.fastadapter.GenericFastAdapter
 import com.mikepenz.fastadapter.adapters.GenericFastItemAdapter
 import java.util.concurrent.TimeUnit
 
-class MainActivity : BaseActivityVM<ActivityMainBinding,MainActivityViewModel>() {
+
+class MainActivity : BaseActivityVM<ActivityMainBinding, MainActivityViewModel>() {
 
     private val fastAdapter by lazy { GenericFastItemAdapter() }
+    private val router = MainRouter()
+
+    // Keep track of the previously selected position
+    private var previousSelectedPosition = RecyclerView.NO_POSITION
     override fun bindToolbar(): Toolbar? {
         return null
     }
 
     override fun enableBackButton(): Boolean {
-       return false
+        return false
     }
 
     override fun getUiBinding(): ActivityMainBinding {
         return ActivityMainBinding.inflate(layoutInflater)
     }
+
     override fun onFirstLaunch(savedInstanceState: Bundle?) {
         baseViewModel?.doSearchResult()
         initRecycleview()
@@ -75,14 +79,34 @@ class MainActivity : BaseActivityVM<ActivityMainBinding,MainActivityViewModel>()
 
             appbarSearch.specialSearchEdtxSearch
                 .textChanges()
-                .debounce(800,TimeUnit.MILLISECONDS)
-                .subscribe {querySearch ->
-                    if (querySearch.isEmpty()){
+                .debounce(800, TimeUnit.MILLISECONDS)
+                .subscribe { querySearch ->
+                    if (querySearch.isEmpty()) {
                         baseViewModel?.doSearchResult()
-                    }else{
+                    } else {
                         baseViewModel?.doSearchResult(querySearch.toString())
                     }
                 }.disposedBy(disposable)
+
+            fastAdapter.onClickListener = { _, _, item, position ->
+                if (item is MusicLayoutItem) {
+                    router.openBottomSheetMusicPlayer(
+                        supportFragmentManager,
+                        item.item.previewUrl.orEmpty(),
+                        onDismissCallback = {
+                            val item = fastAdapter.getAdapterItem(position)
+                            item.isSelected = false
+                            fastAdapter.notifyItemChanged(position)
+                        })
+                    fastAdapter.getItem(previousSelectedPosition)?.let {
+                        it.isSelected = false
+                    }
+                    item.isSelected = true
+                    previousSelectedPosition = position
+                    fastAdapter.notifyItemChanged(position)
+                }
+                true
+            }
 
         }
     }
@@ -92,21 +116,22 @@ class MainActivity : BaseActivityVM<ActivityMainBinding,MainActivityViewModel>()
     }
 
     override fun observeViewModel(viewModel: MainActivityViewModel) {
-        observe(viewModel.isLoadingLiveData,::handleLoadingState)
-        observe(viewModel.failureLiveData,::handleFailure)
-        observe(viewModel.searchResultEvent,::handleResultSearch)
+        observe(viewModel.isLoadingLiveData, ::handleLoadingState)
+        observe(viewModel.failureLiveData, ::handleFailure)
+        observe(viewModel.searchResultEvent, ::handleResultSearch)
     }
 
     private fun handleLoadingState(status: Boolean?) {
         viewBinding?.mainSwipeRefresh?.isRefreshing = status == true
     }
+
     private fun handleResultSearch(searchResultItems: List<SearchResultItem>?) {
         fastAdapter.clear()
-        if (searchResultItems?.isNotEmpty() == true){
+        if (searchResultItems?.isNotEmpty() == true) {
             searchResultItems.map { searchResultItem ->
                 fastAdapter.add(MusicLayoutItem(searchResultItem))
             }
-        }else {
+        } else {
             fastAdapter.add(MusicEmptyItem())
         }
     }

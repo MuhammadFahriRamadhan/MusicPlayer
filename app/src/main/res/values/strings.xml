@@ -5,4 +5,8 @@
     <string name="session_expired_error_toast">Sesi Anda sudah berakhir, silahkan melakukan login ulang</string>
     <string name="str_search">Pencarian</string>
     <string name="str_empty_playlist">Playlist tidak ditemukan</string>
+    <string name="str_button_play">buttonplay</string>
+    <string name="str_previous_btn">previousbutton</string>
+    <string name="str_album_cover">albumcover</string>
+    <string name="str_button_next">btnnext</string>
 </resources>

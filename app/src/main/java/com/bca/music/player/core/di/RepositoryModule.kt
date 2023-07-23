@@ -10,7 +10,7 @@ import dagger.Provides
 class RepositoryModule {
 
     @Provides
-    fun provideUserRepository(searchApi: SearchApi): SearchRepository {
+    fun provideSearchRepository(searchApi: SearchApi): SearchRepository {
         return SearchRepositoryImpl(searchApi)
     }
 

@@ -6,8 +6,6 @@ import com.bca.music.player.MusicPlayerApp
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import dagger.Module
 import dagger.Provides
-import com.bca.music.player.core.data.network.api.MusicPlayerInterceptor
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -32,13 +30,11 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesOkhttpClient(musicPlayerInterceptor: MusicPlayerInterceptor, application : MusicPlayerApp): OkHttpClient {
+    fun providesOkhttpClient(): OkHttpClient {
         return OkHttpClient()
             .newBuilder()
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
-            .addInterceptor(musicPlayerInterceptor)
-//            .addInterceptor(ChuckerInterceptor(application))
             .apply {
                 if (BuildConfig.DEBUG) {
                     addInterceptor(httpLoggingInterceptor())
