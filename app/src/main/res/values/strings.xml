@@ -3,4 +3,6 @@
     <string name="error_disconnect">Tidak dapat terhubung, check koneksi anda</string>
     <string name="error_default">Terjadi kesalahan, coba lagi</string>
     <string name="session_expired_error_toast">Sesi Anda sudah berakhir, silahkan melakukan login ulang</string>
+    <string name="str_search">Pencarian</string>
+    <string name="str_empty_playlist">Playlist tidak ditemukan</string>
 </resources>

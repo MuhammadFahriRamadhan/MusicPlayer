@@ -9,7 +9,9 @@ import javax.inject.Singleton
 
 @Module
 class ApiModule {
-
-
-
+    @Provides
+    @Singleton
+    fun provideUserApi(retrofit: Retrofit): SearchApi {
+        return retrofit.create(SearchApi::class.java)
+    }
 }

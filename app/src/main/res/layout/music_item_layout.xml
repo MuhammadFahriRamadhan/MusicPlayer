@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- music_item_layout.xml -->
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@color/grayDark1"
+    app:cardCornerRadius="@dimen/_8sdp"
+    android:elevation="@dimen/_8sdp">
+
+    <!-- music_item_layout.xml -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Album Cover -->
+        <ImageView
+            android:id="@+id/album_cover"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_img_placeholder"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="16dp" />
+
+        <!-- Song Title -->
+        <TextView
+            android:id="@+id/song_title"
+            style="@style/TextInter700"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/lottie_audio"
+            app:layout_constraintStart_toEndOf="@id/album_cover"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Song Title" />
+
+        <!-- Artist Name -->
+        <TextView
+            android:id="@+id/artist_name"
+            style="@style/TextInter600"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/album_name"
+            app:layout_constraintEnd_toStartOf="@+id/lottie_audio"
+            app:layout_constraintStart_toEndOf="@id/album_cover"
+            app:layout_constraintTop_toBottomOf="@id/song_title"
+            tools:text="Artist Name" />
+
+        <!-- Album Name -->
+        <TextView
+            android:id="@+id/album_name"
+            style="@style/TextInter600"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/album_cover"
+            app:layout_constraintEnd_toEndOf="@+id/artist_name"
+            app:layout_constraintStart_toEndOf="@id/album_cover"
+            app:layout_constraintTop_toBottomOf="@id/artist_name"
+            tools:text="Album Name" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_audio"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_centerInParent="true"
+            app:layout_constraintBottom_toBottomOf="@+id/album_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/song_title"
+            app:layout_constraintTop_toTopOf="@+id/song_title"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="sound_wave_audio.json"
+            app:lottie_loop="true"
+            app:lottie_repeatMode="restart" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

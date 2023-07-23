@@ -32,7 +32,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesOkhttpClient3(musicPlayerInterceptor: MusicPlayerInterceptor, application : MusicPlayerApp): OkHttpClient {
+    fun providesOkhttpClient(musicPlayerInterceptor: MusicPlayerInterceptor, application : MusicPlayerApp): OkHttpClient {
         return OkHttpClient()
             .newBuilder()
             .connectTimeout(60, TimeUnit.SECONDS)
