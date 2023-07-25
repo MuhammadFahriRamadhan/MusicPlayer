@@ -3,7 +3,6 @@ package com.bca.music.player.view.main.bottomsheet
 import android.os.Bundle
 import android.view.View
 import androidx.media3.common.MediaItem
-import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import com.bca.music.player.core.base.BaseBottomSheet
 import com.bca.music.player.databinding.BottomsheetMusicPlayerBinding

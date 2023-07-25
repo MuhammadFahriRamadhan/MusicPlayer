@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.bca.music.player.R
+import com.google.android.material.snackbar.BaseTransientBottomBar
 
 class CustomSnackbarView(
     parent: ViewGroup,

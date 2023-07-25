@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "415920534542",
+    "project_id": "musicplayer-e79a3",
+    "storage_bucket": "musicplayer-e79a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415920534542:android:350602114e69c52f1c785f",
+        "android_client_info": {
+          "package_name": "com.bca.music.player"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415920534542-au00m0o0dh8lk13t59vpqr5osbkgkasi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjkqekFiT7zC0lBAIoOCNkyMbuIOgyY3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415920534542-au00m0o0dh8lk13t59vpqr5osbkgkasi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

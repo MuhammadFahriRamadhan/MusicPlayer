@@ -1,8 +1,8 @@
 package com.bca.music.player.core.di
 
-import android.util.Log
-import com.bca.music.player.MusicPlayerApp
 //import com.chuckerteam.chucker.api.ChuckerInterceptor
+import android.util.Log
+import com.bca.music.player.BuildConfig
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import dagger.Module
 import dagger.Provides
@@ -13,7 +13,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-import com.bca.music.player.BuildConfig
 
 @Module
 class NetworkModule {

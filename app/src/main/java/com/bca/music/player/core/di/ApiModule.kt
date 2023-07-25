@@ -1,10 +1,9 @@
 package com.bca.music.player.core.di
 
+import com.bca.music.player.core.data.network.api.SearchApi
 import dagger.Module
 import dagger.Provides
-import com.bca.music.player.core.data.network.api.*
 import retrofit2.Retrofit
-import javax.inject.Named
 import javax.inject.Singleton
 
 @Module

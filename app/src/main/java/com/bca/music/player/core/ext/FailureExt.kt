@@ -1,7 +1,6 @@
 package com.bca.music.player.core.ext
 
 import com.bca.music.player.core.exception.Failure
-import com.google.gson.Gson
 import retrofit2.HttpException
 import java.io.IOException
 import java.net.SocketTimeoutException

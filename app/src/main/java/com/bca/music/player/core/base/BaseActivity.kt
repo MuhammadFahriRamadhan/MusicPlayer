@@ -1,9 +1,7 @@
 package com.bca.music.player.core.base
 
 import android.annotation.SuppressLint
-import android.app.ActionBar
 import android.app.Dialog
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -17,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.viewbinding.ViewBinding
-import com.google.android.material.snackbar.Snackbar
 import com.bca.music.player.R
 import com.bca.music.player.core.exception.Failure
 import com.bca.music.player.core.helper.util.CustomSnackbarView

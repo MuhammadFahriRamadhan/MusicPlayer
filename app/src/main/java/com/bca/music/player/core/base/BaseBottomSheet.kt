@@ -1,23 +1,20 @@
 package com.bca.music.player.core.base
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.viewbinding.ViewBinding
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.bca.music.player.R
 import com.bca.music.player.core.exception.Failure
 import com.bca.music.player.core.ext.cloneDefaultTheme
 import com.bca.music.player.core.ext.getDeviceHeight
 import com.bca.music.player.core.ext.setLayoutParamsHeight
-
 import com.bca.music.player.core.helper.util.CustomSnackbarView
-
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseBottomSheet<VB : ViewBinding> : BottomSheetDialogFragment() {

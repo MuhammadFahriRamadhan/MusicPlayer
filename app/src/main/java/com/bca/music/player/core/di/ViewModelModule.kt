@@ -3,11 +3,11 @@ package com.bca.music.player.core.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import dagger.Binds
-import dagger.Module
 import com.bca.music.player.core.di.viewmodel.ViewModelFactory
 import com.bca.music.player.core.di.viewmodel.ViewModelKey
 import com.bca.music.player.view.main.MainActivityViewModel
+import dagger.Binds
+import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Suppress("unused")

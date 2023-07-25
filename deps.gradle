@@ -97,11 +97,5 @@ ext {
             fasAdapterExpandable    : "com.mikepenz:fastadapter-extensions-expandable:5.3.2",
     ]
 
-    testLibraries = [
-            junit         : "junit:junit:$jUnitVersion",
-            junitRunner   : "com.android.support.test:runner:$jUnitRunnerVersion",
-            espressoCore  : "com.android.support.test.espresso:espresso-core:$espressoCoreVersion",
-            mockito       : "org.mockito:mockito-core:$mockitoVersion",
-            mockitoInline : "org.mockito:mockito-inline:$mockitoVersion",
-    ]
+
 }

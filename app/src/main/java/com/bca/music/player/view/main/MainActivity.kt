@@ -1,6 +1,9 @@
 package com.bca.music.player.view.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +19,15 @@ import com.bca.music.player.core.ext.showVisibleIcon
 import com.bca.music.player.databinding.ActivityMainBinding
 import com.bca.music.player.view.main.item.MusicEmptyItem
 import com.bca.music.player.view.main.item.MusicLayoutItem
+import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.identity.BeginSignInRequest
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.GoogleApiClient
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 import com.jakewharton.rxbinding3.widget.textChanges
 import com.mikepenz.fastadapter.adapters.GenericFastItemAdapter
 import java.util.concurrent.TimeUnit
@@ -25,7 +37,6 @@ class MainActivity : BaseActivityVM<ActivityMainBinding, MainActivityViewModel>(
 
     private val fastAdapter by lazy { GenericFastItemAdapter() }
     private val router = MainRouter()
-
     // Keep track of the previously selected position
     private var previousSelectedPosition = RecyclerView.NO_POSITION
     override fun bindToolbar(): Toolbar? {
@@ -43,6 +54,7 @@ class MainActivity : BaseActivityVM<ActivityMainBinding, MainActivityViewModel>(
     override fun onFirstLaunch(savedInstanceState: Bundle?) {
         baseViewModel?.doSearchResult()
         initRecycleview()
+
     }
 
     private fun initRecycleview() {

@@ -4,11 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import dagger.android.support.AndroidSupportInjection
-import com.bca.music.player.core.ext.setLayoutParamsHeight
-
 import javax.inject.Inject
 
 abstract class BaseBottomSheetVM<VB : ViewBinding, VM : BaseViewModel> : BaseBottomSheet<VB>() {

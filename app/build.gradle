@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id("com.google.gms.google-services")
 }
 
 apply from: '../deps.gradle'
@@ -73,7 +74,6 @@ dependencies {
     implementation androidX.cardX
     implementation androidX.activityExt
     implementation androidX.fragmentKtx
-    implementation androidX.constraintLayout
     implementation androidX.lifecycleCommon
     implementation androidX.lifecycleExtensions
     implementation androidX.material
@@ -97,10 +97,10 @@ dependencies {
     implementation libraries.glide
     implementation libraries.glideOkhttp
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.6.0-alpha01'
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.firebase:firebase-auth-ktx:22.1.0'
+    implementation 'com.google.android.gms:play-services-auth:20.6.0'
     kapt libraries.glideCompiler
-
-
 
     // DI
     implementation libraries.dagger
@@ -124,15 +124,17 @@ dependencies {
     implementation "androidx.media3:media3-exoplayer-dash:1.1.0"
     implementation "androidx.media3:media3-ui:1.1.0"
 
+    // Import the Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
+
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+
+    // Add the dependency for the Firebase SDK for Google Analytics
+    implementation("com.google.firebase:firebase-analytics-ktx")
 
     // log
     implementation libraries.timber
-
-
     implementation libraries.lottie
 
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.2.0-alpha01'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.0-alpha01'
 }
